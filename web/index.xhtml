@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Doador Online</title>
+        <link rel="stylesheet" href="#{request.contextPath}/css/estilo.css" type="text/css"/>
+    </h:head>
+    <h:body>
+
+        <!--conteudo-->
+        <b:container fluid="true">
+            <b:row>
+                <b:column span="12">
+                    <b:navBar brand="Quem Somos " brandHref="#" fixed="top" inverse="true">
+                        <b:navbarLinks>
+                            <b:navLink value="Transparência" href="#"/>
+                            <b:navLink value="Endereços" href="#"/>
+                            <b:navLink value="Notícias" href="#"/>
+                            <b:navLink value="Contato" href="#"/>
+                        </b:navbarLinks>
+                    </b:navBar>
+
+                    <b:jumbotron>
+                        <h1>Hello, world!</h1>
+                        <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+                        <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+                    </b:jumbotron>
+                </b:column>
+            </b:row>
+            <!--fim do conteudo-->
+
+
+
+            <hr />
+
+            <!--rodape-->
+            <b:row>
+                <b:column span="12">
+                    <div class="centralizarTitulo">
+                        <h:outputText  value="Copyright 2016 - Doador Online. Todos os direitos reservados."/> 
+                    </div>
+
+                </b:column>
+            </b:row>
+            <!--fim do rodape-->
+        </b:container>
+
+    </h:body>
+</html>
+
