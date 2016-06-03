@@ -42,7 +42,7 @@ public class GenericDAO<T>{
     }
 
     public List<T> listar() {
-        return em.createQuery("fron" + classe.getSimpleName() +"e").getResultList();
+        return em.createQuery("from" + classe.getSimpleName() +"e").getResultList();
     }
 
     

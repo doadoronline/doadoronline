@@ -5,26 +5,27 @@
  */
 package br.edu.fcsl.dao;
 
-import br.edu.fcsl.entidade.Pessoa;
-
+import br.edu.fcsl.entidade.Foto;
 
 /**
  *
  * @author darlisson
  */
-public class pessoaDAO extends GenericDAO{
-      private static pessoaDAO instance;
+public class FotoDAO extends GenericDAO{
+    
+    private static FotoDAO instance;
       
-      
-    public pessoaDAO(){
-        super(Pessoa.class);
+    public FotoDAO(){
+        super(Foto.class);
     }
     
     
-    public static pessoaDAO getInstance() {
+    public static FotoDAO getInstance() {
         if(instance==null){
-            instance = new pessoaDAO();
+            instance = new FotoDAO();
         }
         return instance;
     }
+    
+    
 }

@@ -5,26 +5,24 @@
  */
 package br.edu.fcsl.dao;
 
-import br.edu.fcsl.entidade.Pessoa;
-
-
 /**
  *
  * @author darlisson
  */
-public class pessoaDAO extends GenericDAO{
-      private static pessoaDAO instance;
+public class ProdutoServicoDAO extends GenericDAO{
+    
+    private static ProdutoServicoDAO instance;
       
-      
-    public pessoaDAO(){
-        super(Pessoa.class);
+    public ProdutoServicoDAO(){
+        super(ProdutoServicoDAO.class);
     }
     
     
-    public static pessoaDAO getInstance() {
+    public static ProdutoServicoDAO getInstance() {
         if(instance==null){
-            instance = new pessoaDAO();
+            instance = new ProdutoServicoDAO();
         }
         return instance;
     }
+    
 }

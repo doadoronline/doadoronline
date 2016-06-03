@@ -5,26 +5,29 @@
  */
 package br.edu.fcsl.dao;
 
-import br.edu.fcsl.entidade.Pessoa;
 
+import br.edu.fcsl.entidade.Produto;
+import static javafx.scene.input.KeyCode.T;
 
 /**
  *
  * @author darlisson
  */
-public class pessoaDAO extends GenericDAO{
-      private static pessoaDAO instance;
+public class ProdutoDAO extends GenericDAO{
+    private static ProdutoDAO instance;
       
-      
-    public pessoaDAO(){
-        super(Pessoa.class);
+    public ProdutoDAO(){
+        super(Produto.class);
     }
     
     
-    public static pessoaDAO getInstance() {
+    public static ProdutoDAO getInstance() {
         if(instance==null){
-            instance = new pessoaDAO();
+            instance = new ProdutoDAO();
         }
         return instance;
     }
-}
+    }
+    
+    
+
