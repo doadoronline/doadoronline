@@ -6,6 +6,7 @@
 package br.edu.fcsl.dao;
 
 import br.edu.fcsl.entidade.Pessoa;
+import static com.mchange.v2.log.MLog.instance;
 
 
 /**
@@ -13,10 +14,18 @@ import br.edu.fcsl.entidade.Pessoa;
  * @author darlisson
  */
 public class pessoaDAO extends GenericDAO{
+      private static pessoaDAO instance;
+      
+      
     public pessoaDAO(){
         super(Pessoa.class);
     }
     
     
-    
+    public static pessoaDAO getInstance() {
+        if(instance==null){
+            instance = new pessoaDAO();
+        }
+        return instance;
+    }
 }
