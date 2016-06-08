@@ -15,7 +15,6 @@ import javax.persistence.Id;
  *
  * @author Elias
  */
-
 @Entity
 public class Endereco {
 
@@ -25,6 +24,7 @@ public class Endereco {
     private String pais;
     private String numero;
     private String complemento;
+    private String cidade;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -74,6 +74,14 @@ public class Endereco {
 
     public void setComplemento(String complemento) {
         this.complemento = complemento;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
     }
 
     @Override
