@@ -1,4 +1,19 @@
-
 .centralizarTitulo{
     text-align: center;
+    background-color: #337ab7;
+    color: whitesmoke;
+    height: 200px;
+    line-height: 200px;
+}
+.menu-top{
+    margin-top: 20px !important;
+}
+body{
+    background-image: url('../img/fundo.jpg');
+}
+.brand-logo{
+    width: 45px;
+    height: 30px;
+    padding-right: 10px;
+    
 }

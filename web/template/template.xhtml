@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/default.css"/>
+        <h:outputStylesheet name="./css/cssLayout.css"/>
+        <link href="#{request.contextPath}/css/estilo.css" rel="stylesheet" type="text/css"/>
+        <ui:insert name="title">
+            <title>Doador Online</title>
+
+        </ui:insert>
+    </h:head>
+
+    <h:body>
+        <b:container>
+            <b:row >
+                <b:column span="12">
+
+                    <!--menu top-->
+                    <ui:insert name="top">
+                        <b:navBar brand-img-style-class="brand-logo" brandImg="#{request.contextPath}/img/logo-doador.jpg" 
+                                  styleClass="menu-top" brand="Doador Online" brandHref="#" >
+                            <b:navbarLinks>
+                                <b:navLink value="Home" href="#"></b:navLink>
+                                <b:navLink value="Link" href="#"></b:navLink>
+                                <b:navLink value="Link" href="#"></b:navLink>
+                            </b:navbarLinks>
+                        </b:navBar>
+
+                    </ui:insert>
+
+                    <!--menu lateral-->
+                    <b:row >
+                        <ui:insert name="left">
+                            <b:column span="4">
+                                <b:panel look="primary" title="Sidebar">
+                                    <b:listLinks>
+                                        <b:navLink header="BootsFaces" />
+                                        <b:navLink href="http://www.bootsfaces.net" value="BootsFaces"
+                                                   icon="globe" iconAlign="right"/>
+                                        <b:navLink></b:navLink>
+                                        <b:navLink header="Bootstrap"/>
+                                        <b:navLink href="http://getbootstrap.com/components/#navbar" value="Bootstrap" icon="link"></b:navLink>
+                                        <b:navLink></b:navLink>
+                                        <b:navLink header="Preview"/>
+                                        <b:navLink value="Labels and Badges" outcome="/bootstrap/labelsbadge"
+                                                   icon="tag" iconAlign="right"/>
+                                        <b:navLink value="Slider" outcome="/jquery-ui/slider" iconAwesome="sliders" />
+                                    </b:listLinks>
+                                </b:panel>
+
+                            </b:column>
+                        </ui:insert>
+
+                        <!--conteúdo da pagina-->
+                        <ui:insert name="content">
+                            <b:column span="8">
+                                Aqui serão injetadas as páginas do sistema...
+                            </b:column>
+                        </ui:insert>
+                    </b:row>
+
+
+                    <!--rodapé-->
+                    <ui:insert name="bottom">
+
+                        <div class="centralizarTitulo">
+                            <b:image styleClass="brand-logo" value="/img/logo-doador.jpg" />
+                            <h:outputText  value="Copyright 2016 - Doador Online. Todos os direitos reservados."/> 
+                        </div>
+                    </ui:insert>
+                </b:column>
+            </b:row>            
+        </b:container>
+
+    </h:body>
+
+</html>
