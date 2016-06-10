@@ -6,34 +6,39 @@
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
-        <h:form id="formProduto" enctype="multipart/form-data">
-            <h:panelGrid columns="2">
-                <p:outputLabel value="Nome"/>
-                <p:inputText id="nome" placeholder="Nome do produto"/>
-                <p:outputLabel value="Descrição"/>
-                <p:inputText id="descricao" placeholder="Descrição do produto"/>                
-                <p:outputLabel value="Validade"/>
-                <p:calendar id="validade" pattern="dd-MM-yyyy" mask="true" />
-                <h:outputLabel value="Quandiade" />
-                <p:spinner id="quantidadeDisponivel" stepFactor="1.0" /> 
-                <p:outputLabel value="Tipo"/>
-                <p:selectOneMenu value="">
-                    <f:selectItem itemLabel="Selecione"/>
-                    <f:selectItem itemLabel="Produto" itemValue="1"/>
-                    <f:selectItem itemLabel="Serviço" itemValue="2"/>
-                </p:selectOneMenu> 
-                <p:outputLabel value="Categoria"/>
-                <p:selectOneMenu value="#{produtoMB.produto.categorias}">
-                    <f:selectItems value="#{produtoMB.produto.categorias}"
-                                   var="item"
-                                   itemLabel="#{item.nome}"
-                                   itemValue="#{item}"
-                                   />
-                </p:selectOneMenu>
-                <p:outputLabel value="Adicionar imagem"/>
-                <p:fileUpload value="#{produtoMB.produto.fotos}" mode="simple"/>               
-            </h:panelGrid>            
-            <br/>
+        <p:dialog id="panelCadastro" modal="true" header="Cadastro de aluno"
+                  widgetVar="digAluno">
+            <h:form id="formProduto" enctype="multipart/form-data">
+                <h:panelGrid columns="2">
+                    <p:outputLabel value="Nome"/>
+                    <p:inputText id="nome" placeholder="Nome do produto"/>
+                    <p:outputLabel value="Descrição"/>
+                    <p:inputText id="descricao" placeholder="Descrição do produto"/>                
+                    <p:outputLabel value="Validade"/>
+                    <p:calendar id="validade" pattern="dd-MM-yyyy" mask="true" />
+                    <h:outputLabel value="Quandiade" />
+                    <p:spinner id="quantidadeDisponivel" stepFactor="1.0" /> 
+                    <p:outputLabel value="Tipo"/>
+                    <p:selectOneMenu value="">
+                        <f:selectItem itemLabel="Selecione"/>
+                        <f:selectItem itemLabel="Produto" itemValue="1"/>
+                        <f:selectItem itemLabel="Serviço" itemValue="2"/>
+                    </p:selectOneMenu> 
+                    <p:outputLabel value="Categoria"/>
+                    <p:selectOneMenu value="#{produtoMB.produto.categorias}">
+                        <f:selectItems value="#{produtoMB.produto.categorias}"
+                                       var="item"
+                                       itemLabel="#{item.nome}"
+                                       itemValue="#{item}"
+                                       />
+                    </p:selectOneMenu>
+                    <p:outputLabel value="Adicionar imagem"/>
+                    <p:fileUpload value="#{produtoMB.produto.fotos}" mode="simple"/>  
+                    <p:commandButton value="Salvar" action="#{produtoMB.salvarAction}"/>
+                </h:panelGrid>                       
+            </h:form>
+        </p:dialog>
+        <h:form>
             <p:outputPanel id="panelBotoes">
                 <h:form id="formBotoes">
                     <h:panelGrid columns="4">
@@ -44,8 +49,9 @@
                         <p:commandButton value="Visualizar" action="#{produtoMB.visualizarAction}"/>
                     </h:panelGrid>
                 </h:form>
-            </p:outputPanel>            
-        </h:form>
+            </p:outputPanel>             
+
+        </h:form>        
         <h:form id="formTable">
             <h:panelGrid>
                 <p:panel header="Meus produtos">
@@ -71,8 +77,7 @@
                     </p:dataTable>
                 </p:panel>
             </h:panelGrid>        
-        </h:form>
-
+        </h:form>      
     </ui:define>
 </ui:composition>
 
