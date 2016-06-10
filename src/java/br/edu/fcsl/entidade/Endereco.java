@@ -25,6 +25,8 @@ public class Endereco {
     private String numero;
     private String complemento;
     private String cidade;
+    private Long cep;
+    private String estado;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -82,6 +84,22 @@ public class Endereco {
 
     public void setCidade(String cidade) {
         this.cidade = cidade;
+    }
+
+    public Long getCep() {
+        return cep;
+    }
+
+    public void setCep(Long cep) {
+        this.cep = cep;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @Override
