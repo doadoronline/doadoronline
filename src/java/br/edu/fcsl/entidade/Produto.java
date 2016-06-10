@@ -17,6 +17,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -70,6 +72,7 @@ public class Produto implements Serializable {
         this.descricao = descricao;
     }
 
+    @Temporal(value = TemporalType.DATE)
     public Date getDataValidade() {
         return dataValidade;
     }
