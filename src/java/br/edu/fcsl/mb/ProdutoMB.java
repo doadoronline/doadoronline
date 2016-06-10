@@ -60,7 +60,9 @@ public class ProdutoMB {
     }
     
     public void salvarAction(){
-        
+        dao.salvar(produto);
+        System.out.println(produto);
+        produtos = dao.listar();        
     }
     
     public void alterarAction(){
