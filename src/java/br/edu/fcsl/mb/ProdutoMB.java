@@ -19,13 +19,13 @@ import javax.faces.bean.ViewScoped;
 @ManagedBean
 @ViewScoped
 public class ProdutoMB {
-    
+
     private ProdutoDAO dao;
     private Produto produto;
     private List<Produto> produtos;
-    
+
     @PostConstruct
-    public void init(){
+    public void init() {
         dao = ProdutoDAO.getInstance();
         produto = new Produto();
         produtos = dao.listar();
@@ -54,26 +54,27 @@ public class ProdutoMB {
     public void setProdutos(List<Produto> produtos) {
         this.produtos = produtos;
     }
-    
-    public void novoAction(){
-        
+
+    public void novoAction() {
+        produto = new Produto();
     }
-    
-    public void salvarAction(){
+
+    public void alterarAction() {
+
+    }
+
+    public void excluirAction() {
+        dao.excluir(produto);
+        produtos = dao.listar();
+        produto = null;
+    }
+
+    public void visualizarAction() {
+
+    }
+
+    public void salvarAction() {
         dao.salvar(produto);
-        System.out.println(produto);
-        produtos = dao.listar();        
-    }
-    
-    public void alterarAction(){
-        
-    }
-    
-    public void excluirAction(){
-        
-    }
-    
-    public void visualizarAction(){
-        
+        produtos = dao.listar();
     }
 }
