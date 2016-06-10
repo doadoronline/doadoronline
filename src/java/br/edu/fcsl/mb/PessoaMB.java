@@ -5,7 +5,7 @@
  */
 package br.edu.fcsl.mb;
 
-import br.edu.fcsl.dao.PessoaDAO;
+import br.edu.fcsl.dao.pessoaDAO;
 import br.edu.fcsl.entidade.Pessoa;
 import br.edu.fcsl.util.FacesUtil;
 import java.io.Serializable;
@@ -24,7 +24,7 @@ public class PessoaMB implements Serializable {
 
     private Pessoa pessoa;
     private List<Pessoa> pessoas;
-    private PessoaDAO pessoaDAO;
+    private pessoaDAO pessoaDAO;
     private boolean visualizar;
 
     public void setVisualizar(boolean visualizar) {
@@ -54,7 +54,7 @@ public class PessoaMB implements Serializable {
 
     @PostConstruct
     public void init() {
-        pessoaDAO = new PessoaDAO();
+        pessoaDAO = new pessoaDAO();
         pessoas = pessoaDAO.listar();
     }
 
