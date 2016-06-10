@@ -8,10 +8,11 @@
     <ui:define name="content">
         <p:dialog id="panelCadastro" modal="true" header="Cadastro de aluno"
                   widgetVar="digProduto">        
-            <h:form id="formProduto" enctype="multipart/form-data">
+            <!--<h:form id="formProduto" enctype="multipart/form-data">-->
+            <h:form id="formProduto">
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nome"/>
-                    <p:inputText id="nome" placeholder="Nome do produto"/>
+                    <p:inputText id="nome" placeholder="Nome do produto" value="#{produtoMB.produto.nome}"/>
                     <p:outputLabel value="Descrição"/>
                     <p:inputText id="descricao" placeholder="Descrição do produto"/>                
                     <p:outputLabel value="Validade"/>
