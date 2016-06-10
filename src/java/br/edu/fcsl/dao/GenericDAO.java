@@ -13,10 +13,10 @@ import javax.persistence.Persistence;
  *
  * @author darlisson
  */
-public class GenericDAO<T> {
+public abstract class GenericDAO<T> {
 
-    private EntityManager em;
-    private Class classe;
+    EntityManager em;
+    Class classe;
 
     public GenericDAO(Class classe) {
         em = Persistence.createEntityManagerFactory("PU").createEntityManager();
@@ -43,7 +43,7 @@ public class GenericDAO<T> {
     }
 
     public List<T> listar() {
-        return em.createQuery("from" + classe.getSimpleName() + " e").getResultList();
+        return em.createQuery("from " + classe.getSimpleName() + " e").getResultList();
     }
 
 }
