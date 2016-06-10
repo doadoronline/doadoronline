@@ -7,7 +7,7 @@
                 xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:define name="content">
         <p:dialog id="panelCadastro" modal="true" header="Cadastro de aluno"
-                  widgetVar="digAluno">
+                  widgetVar="digProduto">        
             <h:form id="formProduto" enctype="multipart/form-data">
                 <h:panelGrid columns="2">
                     <p:outputLabel value="Nome"/>
@@ -35,23 +35,21 @@
                     <p:outputLabel value="Adicionar imagem"/>
                     <p:fileUpload value="#{produtoMB.produto.fotos}" mode="simple"/>  
                     <p:commandButton value="Salvar" action="#{produtoMB.salvarAction}"/>
-                </h:panelGrid>                       
+                </h:panelGrid>            
+                <br/>
             </h:form>
         </p:dialog>
-        <h:form>
-            <p:outputPanel id="panelBotoes">
-                <h:form id="formBotoes">
-                    <h:panelGrid columns="4">
-                        <p:commandButton value="Novo" action="#{produtoMB.novoAction}"
-                                         oncomplete="PF('digAluno').show();"/>
-                        <p:commandButton value="Alterar" action="#{produtoMB.alterarAction}"/>
-                        <p:commandButton value="Excluir" action="#{produtoMB.excluirAction}"/>
-                        <p:commandButton value="Visualizar" action="#{produtoMB.visualizarAction}"/>
-                    </h:panelGrid>
-                </h:form>
-            </p:outputPanel>             
-
-        </h:form>        
+        <p:outputPanel id="panelBotoes">
+            <h:form id="formBotoes">
+                <h:panelGrid columns="4">
+                    <p:commandButton value="Novo" action="#{produtoMB.novoAction}"
+                                     oncomplete="PF('digProduto').show();"/>
+                    <p:commandButton value="Alterar" action="#{produtoMB.alterarAction}"/>
+                    <p:commandButton value="Excluir" action="#{produtoMB.excluirAction}"/>
+                    <p:commandButton value="Visualizar" action="#{produtoMB.visualizarAction}"/>
+                </h:panelGrid>
+            </h:form>
+        </p:outputPanel>                    
         <h:form id="formTable">
             <h:panelGrid>
                 <p:panel header="Meus produtos">
@@ -77,7 +75,8 @@
                     </p:dataTable>
                 </p:panel>
             </h:panelGrid>        
-        </h:form>      
+        </h:form>
+
     </ui:define>
 </ui:composition>
 
