@@ -55,5 +55,23 @@ public class ProdutoMB {
         this.produtos = produtos;
     }
     
+    public void novoAction(){
+        
+    }
     
+    public void salvarAction(){
+        
+    }
+    
+    public void alterarAction(){
+        
+    }
+    
+    public void excluirAction(){
+        
+    }
+    
+    public void visualizarAction(){
+        
+    }
 }
