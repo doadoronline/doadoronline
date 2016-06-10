@@ -16,10 +16,10 @@ import javax.persistence.Persistence;
 public abstract class GenericDAO<T> {
 
     EntityManager em;
-    Class classe;
+    private Class<T> classe;
 
     public GenericDAO(Class classe) {
-        em = Persistence.createEntityManagerFactory("PU").createEntityManager();
+        em = Persistence.createEntityManagerFactory("doadoronline").createEntityManager();
         this.classe = classe;
     }
 

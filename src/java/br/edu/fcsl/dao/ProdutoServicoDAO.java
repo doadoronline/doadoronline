@@ -9,20 +9,10 @@ package br.edu.fcsl.dao;
  *
  * @author darlisson
  */
-public class ProdutoServicoDAO extends GenericDAO{
-    
-    private static ProdutoServicoDAO instance;
-      
-    public ProdutoServicoDAO(){
+public class ProdutoServicoDAO extends GenericDAO {
+
+    public ProdutoServicoDAO() {
         super(ProdutoServicoDAO.class);
     }
-    
-    
-    public static ProdutoServicoDAO getInstance() {
-        if(instance==null){
-            instance = new ProdutoServicoDAO();
-        }
-        return instance;
-    }
-    
+
 }

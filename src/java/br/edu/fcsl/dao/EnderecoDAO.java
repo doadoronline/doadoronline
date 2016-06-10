@@ -11,19 +11,11 @@ import br.edu.fcsl.entidade.Endereco;
  *
  * @author darlisson
  */
-public class EnderecoDAO extends GenericDAO{
-     private static EnderecoDAO instance;
+public class EnderecoDAO extends GenericDAO<Endereco>{
       
     public EnderecoDAO(){
         super(Endereco.class);
     }
     
-    
-    public static EnderecoDAO getInstance() {
-        if(instance==null){
-            instance = new EnderecoDAO();
-        }
-        return instance;
-    }
     
 }

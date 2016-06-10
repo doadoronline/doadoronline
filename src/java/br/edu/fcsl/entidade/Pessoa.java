@@ -84,4 +84,8 @@ public class Pessoa implements Serializable {
         return true;
     }
 
+    public Pessoa() {
+        endereco = new Endereco();
+    }
+
 }

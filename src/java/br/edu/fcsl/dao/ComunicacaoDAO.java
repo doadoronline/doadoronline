@@ -11,19 +11,10 @@ import br.edu.fcsl.entidade.Comunicacao;
  *
  * @author darlisson
  */
-public class ComunicacaoDAO extends GenericDAO{
-    private static ComunicacaoDAO instance;
-      
-    public ComunicacaoDAO(){
+public class ComunicacaoDAO extends GenericDAO<Comunicacao> {
+
+    public ComunicacaoDAO() {
         super(Comunicacao.class);
     }
-    
-    
-    public static ComunicacaoDAO getInstance() {
-        if(instance==null){
-            instance = new ComunicacaoDAO();
-        }
-        return instance;
-    }
-    
+
 }

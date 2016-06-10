@@ -11,21 +11,13 @@ import br.edu.fcsl.entidade.Foto;
  *
  * @author darlisson
  */
-public class FotoDAO extends GenericDAO{
+public class FotoDAO extends GenericDAO<Foto>{
     
-    private static FotoDAO instance;
       
     public FotoDAO(){
         super(Foto.class);
     }
     
-    
-    public static FotoDAO getInstance() {
-        if(instance==null){
-            instance = new FotoDAO();
-        }
-        return instance;
-    }
     
     
 }

@@ -7,13 +7,12 @@ package br.edu.fcsl.mb;
 
 import br.edu.fcsl.dao.ProdutoDAO;
 import br.edu.fcsl.entidade.Produto;
+import br.edu.fcsl.util.FacesUtil;
 import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
-import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
 import org.primefaces.model.UploadedFile;
 
 /**
@@ -24,24 +23,24 @@ import org.primefaces.model.UploadedFile;
 @ViewScoped
 public class ProdutoMB implements Serializable {
 
-    private ProdutoDAO dao;
+    private ProdutoDAO produtoDAO;
     private Produto produto;
     private List<Produto> produtos;
     private UploadedFile file;
 
     @PostConstruct
     public void init() {
-        dao = ProdutoDAO.getInstance();
+        produtoDAO = new ProdutoDAO();
         produto = new Produto();
-        produtos = dao.listar();
+        produtos = produtoDAO.listar();
     }
 
     public ProdutoDAO getDao() {
-        return dao;
+        return produtoDAO;
     }
 
-    public void setDao(ProdutoDAO dao) {
-        this.dao = dao;
+    public void setDao(ProdutoDAO produtoDAO) {
+        this.produtoDAO = produtoDAO;
     }
 
     public Produto getProduto() {
@@ -77,18 +76,19 @@ public class ProdutoMB implements Serializable {
     }
 
     public void excluirAction() {
-        dao.excluir(produto);
-        produtos = dao.listar();
+        produtoDAO.excluir(produto);
+        produtos = produtoDAO.listar();
         produto = null;
     }
 
     public void visualizarAction() {
-
+        
     }
 
     public void salvarAction() {
-        dao.salvar(produto);
-        produtos = dao.listar();
+        produtoDAO.salvar(produto);
+        produtos = produtoDAO.listar();
+        FacesUtil.enviarMensagemSucesso("Produto cadastrado com sucesso!");
     }
 
     public void upload() {

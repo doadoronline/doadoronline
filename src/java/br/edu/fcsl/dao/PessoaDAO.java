@@ -5,16 +5,16 @@
  */
 package br.edu.fcsl.dao;
 
-import br.edu.fcsl.entidade.Categoria;
+import br.edu.fcsl.entidade.Pessoa;
 
 /**
  *
  * @author darlisson
  */
-public class CategoriaDAO extends GenericDAO<Categoria> {
+public class PessoaDAO extends GenericDAO<Pessoa> {
 
-    public CategoriaDAO() {
-        super(Categoria.class);
+    public PessoaDAO() {
+        super(Pessoa.class);
     }
 
 }

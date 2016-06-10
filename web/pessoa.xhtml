@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition 
+    template="/template/template.xhtml"    
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:b="http://bootsfaces.net/ui">
+
+
+    <ui:define name="content">
+        <p:growl id="msg"  />
+
+        <h4>Cadastro de Pessoa</h4>
+
+        <p:dialog resizable="false" id="panelCadastro" modal="true" appendTo="@(body)" header="Cadastro de Pessoa"
+                  widgetVar="dlgPessoa">        
+            <h:form id="formPessoa" enctype="multipart/form-data">            
+                <div class="ui-fluid">
+
+                    <p:panelGrid  columns="2" layout="grid" columnClasses="ui-grid-col-4,ui-grid-col-8"  >
+                        <p:outputLabel value="Nome:"/>
+                        <p:inputText readonly="#{pessoaMB.visualizar}" placeholder="Informe seu nome" value="#{pessoaMB.pessoa.nome}"/>
+                        <p:outputLabel value="e-Mail:"/>
+                        <p:inputText readonly="#{pessoaMB.visualizar}" placeholder="Informe seu e-Mail" value="#{pessoaMB.pessoa.email}"/>
+                        <p:outputLabel value="Rua:"/>
+                        <p:inputText  readonly="#{pessoaMB.visualizar}" value="#{pessoaMB.pessoa.endereco.rua}" placeholder="Informe sua rua"/>                
+                        <p:outputLabel value="Número:"/>
+                        <p:inputText  readonly="#{pessoaMB.visualizar}" placeholder="Informe seu numero:"  value="#{pessoaMB.pessoa.endereco.numero}" />
+                        <h:outputLabel value="Bairro:" />
+                        <p:inputText readonly="#{pessoaMB.visualizar}" placeholder="Informe seu bairro" value="#{pessoaMB.pessoa.endereco.bairro}" />
+                        <h:outputLabel value="Cidade:" />
+                        <p:inputText  readonly="#{pessoaMB.visualizar}" placeholder="Informe sua cidade" value="#{pessoaMB.pessoa.endereco.cidade}" />
+                        <p:outputLabel value="País:"/>
+                        <p:inputText readonly="#{pessoaMB.visualizar}" placeholder="Informe seu país" value="#{pessoaMB.pessoa.endereco.pais}" />
+                        <p:outputLabel value="Complemento:"/>
+                        <p:inputText readonly="#{pessoaMB.visualizar}" placeholder="Informe seu complemento" value="#{pessoaMB.pessoa.endereco.complemento}" />
+                    </p:panelGrid>       
+                </div>
+
+                <p:commandButton disabled="#{pessoaMB.visualizar}" style="margin-top: 10px;" update=":msg :formTable" value="Salvar" action="#{pessoaMB.salvarAction}"/>
+            </h:form>
+        </p:dialog>
+
+
+        <h:form id="formTable">
+
+            <b:container>
+                <b:row>
+                    <b:column span="12">
+
+                        <p:outputPanel id="panelBotoes">
+                            <h:panelGrid  columns="4">
+                                <p:commandButton value="Novo" update=":formPessoa" action="#{pessoaMB.novoAction}"
+                                                 oncomplete="PF('dlgPessoa').show();"/>
+                                <p:commandButton value="Alterar" action="#{pessoaMB.alterarAction}" oncomplete="PF('dlgPessoa').show();" update=":formPessoa" />
+                                <p:commandButton value="Excluir" update=":formExclusao" oncomplete="PF('dlgExclusaoPessoa').show()" />
+                                <p:commandButton value="Visualizar" oncomplete="PF('dlgPessoa').show()" update=":formPessoa" action="#{pessoaMB.visualizarAction}"/>
+                            </h:panelGrid>
+                        </p:outputPanel>              
+
+                        <p:spacer height="10px;" />
+
+                        <p:dataTable style="width: 80%;"  resizableColumns="true" value="#{pessoaMB.pessoas}" var="pessoa"
+                                     emptyMessage="Nenhum registro encontrado."
+                                     paginator="true" paginatorPosition="top"
+                                     rowsPerPageTemplate="5, 10, 15" rows="10"
+                                     rowKey="#{pessoa.id}"
+                                     selectionMode="single"
+                                     selection="#{pessoaMB.pessoa}">
+
+                            <p:column sortBy="#{pessoa.nome}">
+                                <f:facet name="header">Nome</f:facet>
+                                <h:outputText value="#{pessoa.nome}"/>
+                            </p:column>               
+                            <p:column>
+                                <f:facet name="header">e-Mail</f:facet>
+                                <h:outputText value="#{pessoa.email}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Rua</f:facet>
+                                <h:outputText value="#{pessoa.endereco.rua}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Numero</f:facet>
+                                <h:outputText value="#{pessoa.endereco.numero}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Bairro</f:facet>
+                                <h:outputText value="#{pessoa.endereco.bairro}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">Cidade</f:facet>
+                                <h:outputText value="#{pessoa.endereco.cidade}"/>
+                            </p:column>
+                            <p:column>
+                                <f:facet name="header">País</f:facet>
+                                <h:outputText value="#{pessoa.endereco.pais}"/>
+                            </p:column>
+
+                            <p:column>
+                                <f:facet name="header">Complemento</f:facet>
+                                <h:outputText value="#{pessoa.endereco.complemento}"/>
+                            </p:column>
+                        </p:dataTable>
+
+                    </b:column>
+                </b:row>
+            </b:container>
+
+        </h:form>
+
+
+        <p:dialog  header="Deseja excluir?" widgetVar="dlgExclusaoPessoa" appendTo="@(body)" modal="true" resizable="false" responsive="true">
+            <h:form id="formExclusao">
+                <p:panelGrid>
+                    <p:outputLabel value="Deseja remover pessoa #{pessoaMB.pessoa.nome} email #{pessoaMB.pessoa.email} ?" />
+                </p:panelGrid>
+
+                <p:commandButton disabled="#{not pessoaMB.pessoaExcluivel}" update=":formTable :msg" oncomplete="PF('dlgExclusaoPessoa').hide()" action="#{pessoaMB.excluir}" value="Sim"/>
+                <p:commandButton oncomplete="PF('dlgExclusaoPessoa').hide()" value="Não"/>
+            </h:form>
+
+        </p:dialog>
+    </ui:define>
+</ui:composition>
+

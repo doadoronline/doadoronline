@@ -1,29 +1,42 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/template/template.xhtml"               
-                xmlns:h="http://xmlns.jcp.org/jsf/html"
-                xmlns:p="http://primefaces.org/ui"
-                xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition 
+    template="/template/template.xhtml"       
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+
+
+
     <ui:define name="content">
-        <p:dialog id="panelCadastro" modal="true" header="Cadastro de aluno"
+
+        <p:growl id="msg" />
+        <h4>Cadastro de Produto</h4>
+        <p:dialog id="panelCadastro" modal="true" appendTo="@(body)" header="Cadastro de Produto"
                   widgetVar="digProduto">        
             <h:form id="formProduto" enctype="multipart/form-data">            
-                <h:panelGrid columns="2">
+                <p:panelGrid  columns="2" layout="grid" columnClasses="ui-grid-col-2,ui-grid-col-10"  >
                     <p:outputLabel value="Nome"/>
                     <p:inputText id="nome" placeholder="Nome do produto" value="#{produtoMB.produto.nome}"/>
                     <p:outputLabel value="Descrição"/>
-                    <p:inputText id="descricao" placeholder="Descrição do produto"/>                
+                    <p:inputText id="descricao" value="#{produtoMB.produto.descricao}" placeholder="Descrição do produto"/>                
                     <p:outputLabel value="Validade"/>
-                    <p:calendar id="validade" pattern="dd-MM-yyyy" mask="true" />
-                    <h:outputLabel value="Quandiade" />
-                    <p:spinner id="quantidadeDisponivel" stepFactor="1.0" /> 
+                    <p:calendar id="validade" value="#{produtoMB.produto.dataValidade}" pattern="dd-MM-yyyy" mask="true" />
+                    <h:outputLabel value="Quantidade" />
+                    <p:spinner id="quantidadeDisponivel" value="#{produtoMB.produto.quantidadeDisponivel}" stepFactor="1.0" /> 
                     <p:outputLabel value="Tipo"/>
-                    <p:selectOneMenu value="">
-                        <f:selectItem itemLabel="Selecione"/>
-                        <f:selectItem itemLabel="Produto" itemValue="1"/>
-                        <f:selectItem itemLabel="Serviço" itemValue="2"/>
-                    </p:selectOneMenu> 
+                    <!--                    <p:selectOneMenu  value="">
+                                            <f:selectItem itemLabel="Selecione"/>
+                                            <f:selectItem itemLabel="Produto" itemValue="1"/>
+                                            <f:selectItem itemLabel="Serviço" itemValue="2"/>
+                                        </p:selectOneMenu> -->
+
+
+
                     <p:outputLabel value="Categoria"/>
                     <p:selectOneMenu value="#{produtoMB.produto.categorias}">
                         <f:selectItems value="#{produtoMB.produto.categorias}"
@@ -33,19 +46,24 @@
                                        />
                     </p:selectOneMenu>
                     <p:outputLabel value="Adicionar imagem"/>
-                    <p:growl id="messages" showDetail="true" />
 
                     <p:fileUpload value="#{produtoMB.file}" mode="simple"/>
 
                     <p:commandButton value="Submit" ajax="false" actionListener="#{produtoMB.upload}" disabled="true" />
-                    <p:commandButton value="Salvar" action="#{produtoMB.salvarAction}"/>
-                </h:panelGrid>            
-                <br/>
+                    <p:commandButton update=":msg :formTable" value="Salvar" action="#{produtoMB.salvarAction}"/>
+                </p:panelGrid>            
             </h:form>
         </p:dialog>
+
+
+
+
+
+
+
         <p:outputPanel id="panelBotoes">
             <h:form id="formBotoes">
-                <h:panelGrid columns="4">
+                <h:panelGrid  columns="4">
                     <p:commandButton value="Novo" action="#{produtoMB.novoAction}"
                                      oncomplete="PF('digProduto').show();"/>
                     <p:commandButton value="Alterar" action="#{produtoMB.alterarAction}"/>
@@ -54,6 +72,13 @@
                 </h:panelGrid>
             </h:form>
         </p:outputPanel>                    
+
+
+
+
+
+
+
         <h:form id="formTable">
             <h:panelGrid>
                 <p:panel header="Meus produtos">
@@ -66,15 +91,17 @@
                                  rowKey="#{item.id}">
                         <p:column sortBy="#{item.nome}">
                             <f:facet name="header">Nome</f:facet>
-                            <h:outputText value=""/>
+                            <h:outputText value="#{item.nome}"/>
                         </p:column>               
                         <p:column>
                             <f:facet name="header">Validade</f:facet>
-                            <h:outputText value=""/>
+                            <h:outputText value="#{item.dataValidade}" >
+                                <f:convertDateTime pattern="dd-MM-yyyy" />
+                            </h:outputText>
                         </p:column>
                         <p:column>
                             <f:facet name="header">Quantidade</f:facet>
-                            <h:outputText value=""/>
+                            <h:outputText value="#{item.quantidadeDisponivel}"/>
                         </p:column>
                     </p:dataTable>
                 </p:panel>

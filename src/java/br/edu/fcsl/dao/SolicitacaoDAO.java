@@ -11,20 +11,10 @@ import br.edu.fcsl.entidade.Solicitacao;
  *
  * @author darlisson
  */
-public class SolicitacaoDAO extends GenericDAO{
-    
-    private static SolicitacaoDAO instance;
-      
-    public SolicitacaoDAO(){
+public class SolicitacaoDAO extends GenericDAO<Solicitacao> {
+
+    public SolicitacaoDAO() {
         super(Solicitacao.class);
     }
-    
-    
-    public static SolicitacaoDAO getInstance() {
-        if(instance==null){
-            instance = new SolicitacaoDAO();
-        }
-        return instance;
-    }
-    
+
 }

@@ -19,7 +19,7 @@ import org.junit.Test;
  */
 public class ProdutoTest {
 
-    private ProdutoDAO dao = ProdutoDAO.getInstance();
+    private ProdutoDAO produtoDAO = new ProdutoDAO();
     private Produto produto;
 
     public ProdutoTest() {
@@ -45,11 +45,10 @@ public class ProdutoTest {
     @Test
     public void salvar() {
         produto.setNome("TEST1");
-        
-        /*
-        int tamanho = dao.listar().size();
-        dao.salvar(produto);
-        assertEquals(tamanho + 1, dao.listar().size());*/
 
+        /*
+         int tamanho = dao.listar().size();
+         dao.salvar(produto);
+         assertEquals(tamanho + 1, dao.listar().size());*/
     }
 }
